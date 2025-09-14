@@ -46,3 +46,9 @@ flask==3.0.3
 # NLP evaluation metrics
 nltk==3.9.1
 rouge-score==0.1.2
+
+# Extra utilities
+pdfplumber==0.11.4   # for parsing Q&A PDFs
+rapidfuzz==3.9.7     # for fuzzy matching gold questions
+pandas==2.2.2        # for leaderboard tables
+
