@@ -7,12 +7,12 @@ from openai import OpenAI
 import pinecone
 import torch
 from transformers import AutoTokenizer, AutoModelForSeq2SeqLM
-import pandas as pd  # ✅ for leaderboard table
+import pandas as pd  # for leaderboard table
 
 # NEW: Evaluation imports
 from evaluation import load_qa_from_pdf, evaluate, find_closest_question  
 
-# ---------------- CONFIG ---------------- #
+# CONFIG  #
 load_dotenv()
 
 PINECONE_API_KEY = os.getenv("PINECONE_API_KEY")
@@ -40,7 +40,7 @@ index = pc.Index(INDEX_NAME)
 qa_dict = load_qa_from_pdf("Electric Vehicle Q&A (Based on Training Manual).pdf")
 
 
-# ---------------- Retrieval ---------------- #
+#  Retrieval 
 def build_context(query, top_k=10, rerank_top_k=5):
     q_emb = embed_model.encode([query], convert_to_numpy=True)[0].tolist()
     res = index.query(vector=q_emb, top_k=top_k, include_metadata=True)
@@ -84,7 +84,7 @@ QUESTION:
 ANSWER:"""
 
 
-# ---------------- LLM Wrappers ---------------- #
+#  LLM Wrappers 
 def ask_openai(prompt, model="gpt-4o-mini"):
     response = client.chat.completions.create(
         model=model,
@@ -100,10 +100,10 @@ def ask_flan(prompt):
     return flan_tokenizer.decode(outputs[0], skip_special_tokens=True)
 
 
-# ---------------- STREAMLIT APP ---------------- #
+# STREAMLIT APP 
 st.set_page_config(page_title="Automobile Manual Assistant (Multi-LLM Leaderboard)", layout="wide")
 
-st.title("🚗 Automobile Service Manual Assistant + Multi-LLM Leaderboard")
+st.title(" Automobile Service Manual Assistant + Multi-LLM Leaderboard")
 st.write("Compare GPT-4o, GPT-4o-mini, and Flan-T5 on CPC + Mega AC Service Manuals.")
 
 query = st.text_input("Enter your question:")
@@ -128,14 +128,14 @@ if st.button("Search & Compare"):
             # Ground truth
             matched_q, gold_answer = find_closest_question(query, qa_dict)
 
-            st.subheader("✅ Ground Truth (from PDF)")
+            st.subheader(" Ground Truth (from PDF)")
             if gold_answer:
                 st.write(gold_answer)
                 st.caption(f"(Matched with: {matched_q})")
             else:
                 st.warning("No sufficiently similar ground truth found in dataset.")
 
-            # ---------------- Leaderboard ---------------- #
+            #  Leaderboard 
             if gold_answer:
                 results = []
                 for model_name, bot_answer in answers.items():
@@ -150,22 +150,22 @@ if st.button("Search & Compare"):
                     })
 
                 df = pd.DataFrame(results)
-                st.subheader("📊 Model Performance Leaderboard")
+                st.subheader(" Model Performance Leaderboard")
                 st.dataframe(df, use_container_width=True)
 
-            # ---------------- Show full answers ---------------- #
-            st.subheader("🤖 Model Answers")
+            #  Show full answers 
+            st.subheader(" Model Answers")
             for model_name, bot_answer in answers.items():
                 st.markdown(f"### {model_name}")
                 st.write(bot_answer)
                 st.markdown("---")
 
             # Retrieved chunks
-            with st.expander("🔹 Retrieved Chunks"):
+            with st.expander(" Retrieved Chunks"):
                 for c, s in retrieved:
                     st.markdown(f"**[{s}]** {c}")
 
-            with st.expander("🔹 Reranked Results"):
+            with st.expander(" Reranked Results"):
                 for c, s in reranked:
                     st.markdown(f"**[{s}]** {c}")
     else:
