@@ -9,7 +9,7 @@ function ModeSelector({ onModeSelect }) {
           className="mode-button owner-mode"
           onClick={() => onModeSelect('owner')}
         >
-          🚗 Owner Mode
+          Owner Mode
           <p className="mode-description">
             (Simple, non-technical explanations)
           </p>

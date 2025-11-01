@@ -11,9 +11,7 @@ from sentence_transformers import SentenceTransformer
 import pinecone
 from PIL import Image
 
-# ===========================
-# CONFIGURATION
-# ===========================
+
 load_dotenv()
 
 PINECONE_API_KEY = os.getenv("PINECONE_API_KEY")
@@ -27,19 +25,13 @@ TABLE_DIR = "pdf_tables"
 os.makedirs(ASSET_DIR, exist_ok=True)
 os.makedirs(TABLE_DIR, exist_ok=True)
 
-# ===========================
-# DEVICE (CPU/GPU)
-# ===========================
+
 device = "cuda" if torch.cuda.is_available() else "cpu"
 
-# ===========================
-# EMBEDDING MODEL
-# ===========================
+
 embed_model = SentenceTransformer("sentence-transformers/all-MiniLM-L6-v2", device=device)
 
-# ===========================
-# INITIALIZE PINECONE
-# ===========================
+
 pc = pinecone.Pinecone(api_key=PINECONE_API_KEY)
 if INDEX_NAME not in [i["name"] for i in pc.list_indexes()]:
     st.write(f"Creating index '{INDEX_NAME}'...")
@@ -52,9 +44,7 @@ if INDEX_NAME not in [i["name"] for i in pc.list_indexes()]:
 
 index = pc.Index(INDEX_NAME)
 
-# ===========================
-# PDF EXTRACTION (TEXT + IMAGES + TABLES)
-# ===========================
+
 def extract_pdf_text(pdf_path):
     doc = fitz.open(pdf_path)
     all_pages_text = []
@@ -140,9 +130,7 @@ def hybrid_chunking(text, max_words=300, overlap=50):
 
     return final_chunks
 
-# ===========================
-# UPLOAD TO PINECONE
-# ===========================
+
 def upload_pdf_to_pinecone(pdf_path, manual_name, chunk_words=300):
     st.write(f"Extracting from {pdf_path} ...")
     text = extract_pdf_text(pdf_path)
@@ -173,12 +161,7 @@ def upload_pdf_to_pinecone(pdf_path, manual_name, chunk_words=300):
     st.success(f"✅ Uploaded {len(vectors)} chunks from '{manual_name}' to Pinecone.")
 
 
-# ===========================
-# STREAMLIT UI
-# ===========================
-# ===========================
-# IMAGE DISPLAY FUNCTION
-# ===========================
+
 def display_answer_with_images(answer_text):
     image_matches = re.findall(r'\[IMAGE:\s*(.*?)\]', answer_text)
     table_matches = re.findall(r'\[TABLE:\s*(.*?)\]', answer_text)

@@ -149,7 +149,7 @@ function Chatbot({ mode, onBack }) {
 
     } catch (err) {
       console.error("API Fetch Error:", err);
-      setError(`❌ Failed to get answer: ${err.message}. Please ensure your FastAPI server is running at ${API_BASE_URL}.`);
+      setError(` Failed to get answer: ${err.message}. Please ensure your FastAPI server is running at ${API_BASE_URL}.`);
     } finally {
       setLoading(false);
     }

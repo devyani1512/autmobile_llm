@@ -12,14 +12,10 @@ from basic import query_pinecone_for_answer, upload_pdf_to_pinecone
 app = FastAPI()
 
 
-# -----------------
-# CORS Configuration
-# -----------------
-# IMPORTANT: Allows the React frontend (running on a different port/origin) 
-# to talk to the FastAPI backend.
+
 origins = [
     "http://localhost:3000",  # Default React development port
-    # Add your production domain here
+    
 ]
 
 app.add_middleware(
@@ -30,16 +26,12 @@ app.add_middleware(
     allow_headers=["*"],
 )
 
-# -----------------
-# Pydantic Schemas
-# -----------------
+
 class QueryRequest(BaseModel):
     query: str
     mode: str  # 'owner' or 'mechanic'
 
-# -----------------
-# API ENDPOINTS
-# -----------------
+
 
 @app.post("/api/ask", response_model=Dict[str, Any])
 async def ask_question(request: QueryRequest):
@@ -67,10 +59,7 @@ async def upload_manual(file: UploadFile = File(...)):
     except Exception as e:
         raise HTTPException(status_code=500, detail=f"Upload and processing failed: {e}")
 
-# -----------------
-# Asset Serving (CRITICAL for images/tables)
-# -----------------
-# This endpoint allows the React frontend to fetch the extracted files
+
 ASSET_DIR = "pdf_assets"
 TABLE_DIR = "pdf_tables"
 
