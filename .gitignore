@@ -1,26 +1,157 @@
-# --- Python ---
-__pycache__/
-*.pyc
-*.pyo
-*.pyd
-*.pkl
-*.log
+# =====================================================
+# 🐍 PYTHON / FASTAPI BACKEND
+# =====================================================
 
-# --- Virtual Environment ---
+# Byte-compiled / optimized / DLL files
+__pycache__/
+*.py[cod]
+*$py.class
+
+# Python virtual environments
 venv/
+env/
+.venv/
+
+# Environment variables
 .env
 *.env
+.env.*
 
-# --- IDE / Editor ---
-.vscode/
-.idea/
+# Python build artifacts
+build/
+develop-eggs/
+dist/
+downloads/
+eggs/
+.eggs/
+lib/
+lib64/
+parts/
+sdist/
+var/
+wheels/
+*.egg-info/
+.installed.cfg
+*.egg
+
+# Logs and caches
+*.log
+*.out
+*.err
+*.pkl
+*.pid
+*.gz
+*.db
+*.sqlite
+*.sqlite3
+*.bak
+*.tmp
 *.swp
 *.swo
+.cache/
+.mypy_cache/
+.pytest_cache/
+coverage/
+htmlcov/
+prof/
 
-# --- OS files ---
+# IDE project settings
+.vscode/
+.idea/
+*.iml
+
+# Jupyter notebooks checkpoints
+.ipynb_checkpoints/
+
+# OS-generated files
 .DS_Store
 Thumbs.db
+ehthumbs.db
+Desktop.ini
+Icon?
+__MACOSX/
 
-# --- Streamlit / Cache ---
-.streamlit/
+# FastAPI / Server temporary
+*.pem
+*.crt
+*.key
+*.lock
+*.pid
+
+# Upload / media / assets folders (generated dynamically)
+pdf_assets/
+pdf_tables/
+uploads/
+media/
+temp/
+tmp/
+
+# =====================================================
+# ⚛️ REACT FRONTEND (Node.js)
+# =====================================================
+
+# Node modules and build output
+node_modules/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+package-lock.json
+yarn.lock
+
+# Build output
+build/
+dist/
+coverage/
 .cache/
+.eslintcache
+vite-dist/
+vite-cache/
+
+# Local environment overrides
+.env.local
+.env.development.local
+.env.test.local
+.env.production.local
+
+# Editor settings
+*.sublime-workspace
+*.sublime-project
+
+# System files
+*.DS_Store
+*.log
+Thumbs.db
+
+# React-specific
+*.map
+*.lock-wscript
+
+# =====================================================
+# 🚀 DEPLOYMENT / CONTAINERS / CLOUD
+# =====================================================
+
+# Docker
+Dockerfile*
+docker-compose*.yml
+.docker/
+*.dockerignore
+
+# Render / Vercel / Netlify / Deployment configs
+.vercel/
+.netlify/
+render.yaml
+
+# Misc cloud build
+*.tar
+*.zip
+*.bak
+*.orig
+
+# =====================================================
+# 🧠 MISC / EXPERIMENTAL
+# =====================================================
+notebooks/
+scratch/
+experiments/
+tests_local/
