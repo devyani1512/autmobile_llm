@@ -17,6 +17,8 @@ model = SentenceTransformer("all-MiniLM-L6-v2")
 pc = Pinecone(api_key=PINECONE_API_KEY)
 index = pc.Index(PINECONE_INDEX_NAME)
 
+
+
 def query_pinecone_for_answer(query: str, mode: str = "default"):
     """Search Pinecone and generate an answer."""
     query_embedding = model.encode(query).tolist()

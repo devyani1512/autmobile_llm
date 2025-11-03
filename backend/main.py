@@ -11,20 +11,23 @@ from basic import query_pinecone_for_answer, upload_pdf_to_pinecone
 
 app = FastAPI()
 
-
-
 origins = [
-    "http://localhost:3000",  # Default React development port
-    
+    "http://localhost:3000",      
+    "http://localhost:5173",      
+    "http://127.0.0.1:5173",     
 ]
+
+
+    
 
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=origins,
+    allow_origins=["*"],  # allow all origins temporarily for testing
     allow_credentials=True,
     allow_methods=["*"],
     allow_headers=["*"],
 )
+
 
 
 class QueryRequest(BaseModel):
