@@ -155,3 +155,8 @@ notebooks/
 scratch/
 experiments/
 tests_local/
+
+/new-frontend/node_modules
+/new-frontend/dist
+/new-frontend/.env.local
+/new-frontend/.env

@@ -15,14 +15,9 @@ networkx==3.1
 numpy==1.24.4
 packaging==24.2
 pillow==10.4.0
-pinecone-client==5.0.1
-pinecone-plugin-inference==1.1.0
-pinecone-plugin-interface==0.0.7
 psutil==7.0.0
-pypdf==5.9.0
 PyMuPDF==1.24.9
 PyYAML==6.0.2
-python-dotenv==1.0.1
 regex==2024.11.6
 requests==2.32.4
 safetensors==0.5.3
@@ -43,14 +38,31 @@ openai==1.30.1
 streamlit==1.39.0
 flask==3.0.3
 
+# FastAPI (for your backend API)
+fastapi
+uvicorn[standard]
+python-multipart
+pydantic
+
+# LangChain
+langchain
+langchain-openai
+langchain-community
+
+# Vector Database
+pinecone-client==5.0.1
+pinecone-plugin-inference==1.1.0
+pinecone-plugin-interface==0.0.7
+
+# PDF Processing
+pypdf==5.9.0
+pdfplumber==0.11.4
+
 # NLP evaluation metrics
 nltk==3.9.1
 rouge-score==0.1.2
 
-# Extra utilities
-pdfplumber==0.11.4   # for parsing Q&A PDFs
-rapidfuzz==3.9.7     # for fuzzy matching gold questions
-pandas==2.0.3       # for leaderboard tables
-python-multipart
-
-
+# Utilities
+python-dotenv==1.0.1
+pandas==2.0.3
+rapidfuzz==3.9.7
