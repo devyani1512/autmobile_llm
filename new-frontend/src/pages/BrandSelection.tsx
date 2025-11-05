@@ -11,7 +11,7 @@ interface Brand {
   theme: string;
 }
 
-const brands: Brand[] = [
+/*const brands: Brand[] = [
   { id: "mercedes", name: "Mercedes-Benz", tagline: "The Best or Nothing", theme: "silver" },
   { id: "bmw", name: "BMW", tagline: "The Ultimate Driving Machine", theme: "chrome" },
   { id: "audi", name: "Audi", tagline: "Vorsprung durch Technik", theme: "platinum" },
@@ -21,7 +21,15 @@ const brands: Brand[] = [
   { id: "jaguar", name: "Jaguar", tagline: "Grace, Space, Pace", theme: "platinum" },
   { id: "volvo", name: "Volvo", tagline: "Made by Sweden", theme: "chrome" },
   { id: "genesis", name: "Genesis", tagline: "Designed to Inspire", theme: "silver" },
+];*/
+const brands: Brand[] = [
+  { id: "toyota", name: "Toyota", tagline: "Let's Go Places", theme: "silver" },
+  { id: "maruti", name: "Maruti Suzuki", tagline: "Way of Life", theme: "chrome" },
+  { id: "hyundai", name: "Hyundai", tagline: "New Thinking. New Possibilities.", theme: "platinum" },
+  { id: "tata", name: "Tata Motors", tagline: "Connecting Aspirations", theme: "silver" },
+  { id: "nissan", name: "Nissan", tagline: "Innovation That Excites", theme: "chrome" },
 ];
+
 
 const BrandSelection = () => {
   const navigate = useNavigate();

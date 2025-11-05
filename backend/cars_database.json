@@ -1,0 +1,74 @@
+{
+  "manufacturers": {
+    "toyota": [
+      {
+        "model": "corolla hybrid",
+        "year": "2022",
+        "namespace": "toyota-corolla-hybrid"
+      },
+      {
+        "model": "highlander",
+        "year": "2016",
+        "namespace": "toyota-highlander"
+      },
+      {
+        "model": "avalon",
+        "year": "2020",
+        "namespace": "toyota-avalon"
+      }
+    ],
+    "hyundai": [
+      {
+        "model": "exter",
+        "year": "2018",
+        "namespace": "hyundai-exter"
+      },
+      {
+        "model": "nios",
+        "year": "2020",
+        "namespace": "hyundai-nios"
+      },
+      {
+        "model": "verna",
+        "year": "2020",
+        "namespace": "hyundai-verna"
+      }
+    ],
+    "maruti suzuki": [
+      {
+        "model": "swift",
+        "year": "2022",
+        "namespace": "maruti-suzuki-swift"
+      }
+    ],
+    "nissan": [
+      {
+        "model": "magnite",
+        "year": "2022",
+        "namespace": "nissan-magnite"
+      },
+      {
+        "model": "indica",
+        "year": "2016",
+        "namespace": "nissan-indica"
+      }
+    ],
+    "tata": [
+      {
+        "model": "indica",
+        "year": "2019",
+        "namespace": "tata-indica"
+      },
+      {
+        "model": "punch",
+        "year": "2020",
+        "namespace": "tata-punch"
+      },
+      {
+        "model": "safari",
+        "year": "2023",
+        "namespace": "tata-safari"
+      }
+    ]
+  }
+}

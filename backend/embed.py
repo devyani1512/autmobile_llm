@@ -281,8 +281,16 @@ def upload_pdf_to_pinecone(pdf_path, manual_name, chunk_words=300):
 
         # Extract image/table references for metadata
         images = [part.split(": ")[1] for part in chunk_text.split() if part.startswith("[IMAGE:")]
-        tables = [part.split(": ")[1] for part in chunk_text.split() if part.startswith("[TABLE:")]
-
+        print("Problematic chunk:", chunk_text)
+    
+    
+        #tables = [part.split(": ")[1] for part in chunk_text.split() if part.startswith("[TABLE:")]
+    tables = []
+    for part in chunk_text.split():
+        if part.startswith("[TABLE:") and part.endswith("]"):
+            table_ref = part[len("[TABLE:"): -1].strip()
+            tables.append(table_ref)
+   
         meta = {
             "manual": manual_name,
             "title": title,

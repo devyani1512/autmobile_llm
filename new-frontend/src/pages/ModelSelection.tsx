@@ -74,6 +74,39 @@ const brandNames: Record<string, string> = {
   volvo: "Volvo",
   genesis: "Genesis",
 };
+/*const modelsByBrand: Record<string, CarModel[]> = {
+  toyota: [
+    { id: "corolla-hybrid-2022", name: "Corolla Hybrid 2022", tagline: "Efficiency Meets Innovation", specs: { engine: "Hybrid 1.8L", power: "121 HP", year: "2022" } },
+    { id: "avalon-2010", name: "Avalon 2010", tagline: "Classic Comfort", specs: { engine: "V6 3.5L", power: "268 HP", year: "2010" } },
+    { id: "highlander-2013", name: "Highlander 2013", tagline: "Adventure with Elegance", specs: { engine: "V6 3.5L", power: "270 HP", year: "2013" } },
+  ],
+  maruti: [
+    { id: "swift", name: "Swift", tagline: "Limitless Excitement", specs: { engine: "1.2L Petrol", power: "89 HP", year: "2024" } },
+  ],
+  hyundai: [
+    { id: "grandi10-nios", name: "Grand i10 Nios", tagline: "Compact and Smart", specs: { engine: "1.2L Petrol", power: "83 HP", year: "2024" } },
+    { id: "exter", name: "Exter", tagline: "Think Outside. Think Exter.", specs: { engine: "1.2L Petrol", power: "83 HP", year: "2024" } },
+    { id: "verna", name: "Verna", tagline: "Seductive and Strong", specs: { engine: "1.5L Turbo", power: "160 HP", year: "2024" } },
+  ],
+  tata: [
+    { id: "punch", name: "Punch", tagline: "The SUV for the Urban Jungle", specs: { engine: "1.2L Revotron", power: "86 HP", year: "2024" } },
+    { id: "indica", name: "Indica", tagline: "The Original Indian Hatchback", specs: { engine: "1.4L Diesel", power: "70 HP", year: "2010" } },
+    { id: "safari", name: "Safari", tagline: "Reclaim Your Life", specs: { engine: "2.0L Kryotec", power: "170 HP", year: "2024" } },
+  ],
+  nissan: [
+    { id: "magnite", name: "Nissan Magnite", tagline: "Big. Bold. Beautiful.", specs: { engine: "1.0L Turbo", power: "98 HP", year: "2024" } },
+    { id: "xtrail", name: "Nissan X-Trail", tagline: "Confidence in Every Drive", specs: { engine: "2.0L Petrol", power: "142 HP", year: "2024" } },
+  ],
+};
+
+const brandNames: Record<string, string> = {
+  toyota: "Toyota",
+  maruti: "Maruti Suzuki",
+  hyundai: "Hyundai",
+  tata: "Tata Motors",
+  nissan: "Nissan",
+};*/
+
 
 const ModelSelection = () => {
   const navigate = useNavigate();

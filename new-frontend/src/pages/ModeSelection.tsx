@@ -90,6 +90,8 @@ const ModeSelection = () => {
             initial="hidden"
             animate="visible"
             whileHover={{ y: -25, rotateY: 5, scale: 1.02 }}
+            //onClick={() => navigate(`/chat?brand=${brand}&model=${model}&mode=owner`)}
+
             onClick={() => navigate(`/dashboard/owner?brand=${brand}&model=${model}`)}
             className="cursor-pointer"
             style={{ perspective: "1000px" }}
@@ -133,6 +135,8 @@ const ModeSelection = () => {
             initial="hidden"
             animate="visible"
             whileHover={{ y: -25, rotateY: -5, scale: 1.02 }}
+           //onClick={() => navigate(`/chat?brand=${brand}&model=${model}&mode=mechanic`)}
+
             onClick={() => navigate(`/dashboard/mechanic?brand=${brand}&model=${model}`)}
             className="cursor-pointer"
             style={{ perspective: "1000px" }}
