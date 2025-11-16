@@ -32,39 +32,67 @@ app.add_middleware(
 
 class QueryRequest(BaseModel):
     query: str
-    mode: str  # 'owner' or 'mechanic'
+    manufacturer: str  # NEW
+    model: str         # NEW
+    mode: str = "owner"
 
 
 
-@app.post("/api/ask", response_model=Dict[str, Any])
+# @app.post("/api/ask", response_model=Dict[str, Any])
+# async def ask_question(request: QueryRequest):
+#     """Endpoint for the chatbot query."""
+#     try:
+#         answer = query_pinecone_for_answer(request.query, request.mode)
+#         return {"answer": answer}
+#     except Exception as e:
+#         raise HTTPException(status_code=500, detail=f"Query failed: {e}")
+
+# @app.post("/api/upload")
+# async def upload_manual(file: UploadFile = File(...)):
+#     """Endpoint to upload a PDF and process it into Pinecone."""
+#     if not file.filename.endswith('.pdf'):
+#         raise HTTPException(status_code=400, detail="Only PDF files are supported.")
+
+#     try:
+#         # Read file content
+#         content = await file.read()
+        
+#         # Process and upload the file using the core logic
+#         result = upload_pdf_to_pinecone(content, file.filename)
+        
+#         return {"message": "PDF processed and uploaded successfully.", "details": result}
+#     except Exception as e:
+#         raise HTTPException(status_code=500, detail=f"Upload and processing failed: {e}")
+@app.post("/api/ask")
 async def ask_question(request: QueryRequest):
-    """Endpoint for the chatbot query."""
+    """
+    Handle user queries with manufacturer and model context
+    """
     try:
-        answer = query_pinecone_for_answer(request.query, request.mode)
-        return {"answer": answer}
-    except Exception as e:
-        raise HTTPException(status_code=500, detail=f"Query failed: {e}")
-
-@app.post("/api/upload")
-async def upload_manual(file: UploadFile = File(...)):
-    """Endpoint to upload a PDF and process it into Pinecone."""
-    if not file.filename.endswith('.pdf'):
-        raise HTTPException(status_code=400, detail="Only PDF files are supported.")
-
-    try:
-        # Read file content
-        content = await file.read()
+        result = query_pinecone_for_answer(
+            query=request.query,
+            manufacturer=request.manufacturer,
+            model_name=request.model,
+            mode=request.mode
+        )
         
-        # Process and upload the file using the core logic
-        result = upload_pdf_to_pinecone(content, file.filename)
-        
-        return {"message": "PDF processed and uploaded successfully.", "details": result}
+        return {
+            "status": "success",
+            "answer": result
+        }
+    
     except Exception as e:
-        raise HTTPException(status_code=500, detail=f"Upload and processing failed: {e}")
-
+        print(f"❌ Error: {str(e)}")
+        raise HTTPException(status_code=500, detail=str(e))
 
 ASSET_DIR = "pdf_assets"
 TABLE_DIR = "pdf_tables"
+@app.get("/api/health")
+async def health_check():
+    return {"status": "healthy"}
+
+
+
 
 @app.get("/assets/{filename}")
 async def get_asset(filename: str):
@@ -84,3 +112,7 @@ async def get_asset(filename: str):
         return FileResponse(asset_path)
     else:
         raise HTTPException(status_code=404, detail="Asset not found.")
+    
+if __name__ == "__main__":
+    import uvicorn
+    uvicorn.run(app, host="0.0.0.0", port=8000)
