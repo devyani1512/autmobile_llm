@@ -210,11 +210,22 @@ const ModeSelection = () => {
     })
   };
 
+  // const handleModeSelect = (mode: "owner" | "mechanic") => {
+  //   console.log("🔧 Mode selected:", mode);
+  //   console.log("🔗 Navigating to:", `/chat?brand=${brand}&model=${model}&mode=${mode}`);
+  //   navigate(`/chat?brand=${brand}&model=${model}&mode=${mode}`);
+  // };
   const handleModeSelect = (mode: "owner" | "mechanic") => {
-    console.log("🔧 Mode selected:", mode);
-    console.log("🔗 Navigating to:", `/chat?brand=${brand}&model=${model}&mode=${mode}`);
-    navigate(`/chat?brand=${brand}&model=${model}&mode=${mode}`);
-  };
+  console.log("🔧 Mode selected:", mode);
+  
+  if (mode === "owner") {
+    console.log("🔗 Navigating to:", `/dashboard/owner?brand=${brand}&model=${model}`);
+    navigate(`/dashboard/owner?brand=${brand}&model=${model}`);
+  } else {
+    console.log("🔗 Navigating to:", `/dashboard/mechanic?brand=${brand}&model=${model}`);
+    navigate(`/dashboard/mechanic?brand=${brand}&model=${model}`);
+  }
+};
 
   return (
     <div className="min-h-screen bg-gradient-hero relative overflow-hidden">
