@@ -11,14 +11,14 @@ const Landing = () => {
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-background via-primary to-background flex items-center justify-center p-4 relative overflow-hidden">
-      {/* Animated background elements */}
+      
       <div className="absolute inset-0 overflow-hidden">
         <div className="absolute top-1/4 left-1/4 w-96 h-96 bg-accent-owner/10 rounded-full blur-3xl animate-float" />
         <div className="absolute bottom-1/4 right-1/4 w-96 h-96 bg-accent-mechanic/10 rounded-full blur-3xl animate-float" style={{ animationDelay: "1.5s" }} />
       </div>
 
       <div className="relative z-10 max-w-6xl w-full animate-fade-in-up">
-        {/* Hero Section */}
+       
         <div className="text-center mb-16">
           <div className="inline-flex items-center gap-2 mb-6 px-4 py-2 rounded-full bg-card/50 backdrop-blur-glass border border-border">
             <Sparkles className="w-4 h-4 text-accent-owner" />
@@ -32,9 +32,9 @@ const Landing = () => {
           </p>
         </div>
 
-        {/* Mode Selection Cards */}
+       
         <div className="grid md:grid-cols-2 gap-8 max-w-4xl mx-auto">
-          {/* Vehicle Owner Mode */}
+          
           <div 
             className="group relative overflow-hidden rounded-2xl bg-card/50 backdrop-blur-glass border border-border p-8 transition-all duration-300 hover:scale-105 hover:shadow-glow-owner cursor-pointer"
             onClick={() => handleModeSelect("owner")}
@@ -64,7 +64,7 @@ const Landing = () => {
             </div>
           </div>
 
-          {/* Professional Mechanic Mode */}
+          
           <div 
             className="group relative overflow-hidden rounded-2xl bg-card/50 backdrop-blur-glass border border-border p-8 transition-all duration-300 hover:scale-105 hover:shadow-glow-mechanic cursor-pointer"
             onClick={() => handleModeSelect("mechanic")}
@@ -95,7 +95,7 @@ const Landing = () => {
           </div>
         </div>
 
-        {/* Footer Note */}
+       
         <div className="text-center mt-12 text-sm text-muted-foreground">
           Powered by advanced AI trained on comprehensive automotive technical manuals
         </div>
