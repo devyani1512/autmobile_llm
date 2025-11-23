@@ -116,7 +116,7 @@ def query_pinecone_for_answer(query: str, manufacturer: str, model_name: str, mo
     
     # Get the namespace for this specific car
     namespace = get_namespace_for_car(manufacturer, model_name)
-    print(f"🔍 Searching in namespace: {namespace}")
+    print(f" Searching in namespace: {namespace}")
     
     # Generate query embedding
     query_embedding = model.encode(query).tolist()
