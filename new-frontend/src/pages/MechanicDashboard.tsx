@@ -237,7 +237,7 @@ const MechanicDashboard = () => {
 
                 <h3 className="text-3xl font-semibold mb-4 uppercase tracking-wider" style={{ fontFamily: "'Playfadvancedr Display', Georgia, serif" }}>Advanced Diagnostics</h3>
                 <p className="text-zinc-400 mb-8 leading-relaxed text-base font-light" style={{ fontFamily: 'Georgia, serif' }}>
-                  Neural diagnostic reasoning that interprets symptoms, predicts fadvancedlures, and generates precision‑grade repadvancedr pathways tadvancedlored to the vehicle’s engineering profile.
+                  A diagnostic system that interprets symptoms and generates precision-grade repair pathways tailored to the vehicle’s engineering profile
                 </p>
 
                 <Button className="w-full bg-black hover:bg-zinc-900 text-zinc-200 font-semibold py-4 text-sm uppercase rounded-none border border-zinc-700 tracking-wider">
