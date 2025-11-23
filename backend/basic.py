@@ -37,7 +37,7 @@ def get_namespace_for_car(manufacturer: str, model_name: str):
             if car["model"].lower() == model_name.lower():
                 return car["namespace"]
     
-    # Fallback: construct namespace if not found in database
+   
     return f"{manufacturer.lower().replace(' ', '-')}-{model_name.lower().replace(' ', '-')}"
 
 
@@ -55,7 +55,7 @@ def query_pinecone_for_answer(query: str, manufacturer: str, model_name: str, mo
     results = index.query(
         vector=query_embedding, 
         top_k=5, 
-        namespace=namespace,  # ← KEY FIX: Query specific namespace
+        namespace=namespace,  
         include_metadata=True
     )
     
@@ -71,7 +71,7 @@ def query_pinecone_for_answer(query: str, manufacturer: str, model_name: str, mo
     all_images = []
     all_tables = []
     
-    for match in results["matches"][:3]:  # Use top 3 matches for better context
+    for match in results["matches"][:3]:  
         text = match["metadata"]["text"]
         
         # Extract image and table markers
@@ -122,7 +122,7 @@ Provide a clear, helpful answer based on the manual content.
 
     return {
         "answer_text": response.choices[0].message.content.strip(),
-        "images": list(set(all_images)),  # Remove duplicates
+        "images": list(set(all_images)), 
         "tables": list(set(all_tables))
     }
 

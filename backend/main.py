@@ -6,7 +6,7 @@ from typing import Dict, Any, Optional
 import shutil
 import os
 
-# Import your core logic functions
+
 from basic import query_pinecone_for_answer, upload_pdf_to_pinecone
 
 app = FastAPI()
@@ -19,7 +19,7 @@ origins = [
 
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=["*"],  # allow all origins temporarily for testing
+    allow_origins=["*"],  
     allow_credentials=True,
     allow_methods=["*"],
     allow_headers=["*"],
@@ -31,10 +31,9 @@ class QueryRequest(BaseModel):
     manufacturer: str
     model: str
     mode: str = "owner"
-    component: Optional[str] = None  # NEW: Added to support component-focused queries
+    component: Optional[str] = None  
 
 
-# NEW FUNCTION: Enhance query based on mode and component
 def enhance_prompt_by_mode(query: str, mode: str, component: str = None) -> str:
     """
     Enhance the prompt based on the mode to get different response styles
@@ -83,7 +82,7 @@ Format your response with clear sections:
         component_focus = f"\n\nFOCUS AREA: The user is specifically asking about the {component} component. Prioritize information related to this component."
         system_prompt += component_focus
     
-    # Combine system prompt with user query
+    
     enhanced_query = f"{system_prompt}\n\nUser Question: {query}\n\nProvide a comprehensive answer from the vehicle manual, including any relevant diagrams, tables, or specifications."
     
     return enhanced_query
@@ -95,16 +94,16 @@ async def ask_question(request: QueryRequest):
     Handle user queries with manufacturer and model context
     """
     try:
-        # MODIFIED: Enhance the query based on mode and component
+        
         enhanced_query = enhance_prompt_by_mode(
             query=request.query,
             mode=request.mode,
             component=request.component
         )
         
-        # Use enhanced query instead of original query
+        
         result = query_pinecone_for_answer(
-            query=enhanced_query,  # CHANGED: Using enhanced_query instead of request.query
+            query=enhanced_query,  
             manufacturer=request.manufacturer,
             model_name=request.model,
             mode=request.mode
@@ -116,7 +115,7 @@ async def ask_question(request: QueryRequest):
         }
     
     except Exception as e:
-        print(f"❌ Error: {str(e)}")
+        print(f"Error: {str(e)}")
         raise HTTPException(status_code=500, detail=str(e))
 
 ASSET_DIR = "pdf_assets"
@@ -130,17 +129,17 @@ async def health_check():
 @app.get("/assets/{filename}")
 async def get_asset(filename: str):
     """Serves images/tables (assets) from the backend folder."""
-    # Basic check to prevent directory traversal attacks
+    
     if ".." in filename or "/" in filename:
         raise HTTPException(status_code=400, detail="Invalid filename.")
         
-    # Check both the image and table directories
+    
     asset_path = os.path.join(ASSET_DIR, filename)
     if not os.path.exists(asset_path):
         asset_path = os.path.join(TABLE_DIR, filename)
         
     if os.path.exists(asset_path):
-        # NOTE: You need to correctly determine the media type (content-type)
+       
         from fastapi.responses import FileResponse
         return FileResponse(asset_path)
     else:

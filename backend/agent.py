@@ -4,7 +4,7 @@ import torch
 import streamlit as st
 import numpy as np
 import pandas as pd
-import fitz  # PyMuPDF
+import fitz  
 import pdfplumber
 from dotenv import load_dotenv
 from sentence_transformers import SentenceTransformer
@@ -89,9 +89,9 @@ def extract_pdf_text(pdf_path):
 
     return "\n".join(all_pages_text)
 
-# ===========================
+
 # HYBRID CHUNKING
-# ===========================
+
 def split_by_headings(text):
     sections = []
     current_section = []
@@ -158,7 +158,7 @@ def upload_pdf_to_pinecone(pdf_path, manual_name, chunk_words=300):
     for i in range(0, len(vectors), batch_size):
         index.upsert(vectors=vectors[i:i+batch_size])
 
-    st.success(f"✅ Uploaded {len(vectors)} chunks from '{manual_name}' to Pinecone.")
+    st.success(f"Uploaded {len(vectors)} chunks from '{manual_name}' to Pinecone.")
 
 
 
@@ -189,7 +189,7 @@ st.title(" Manual QA with Image Support")
 
 mode = st.radio("Choose Mode", ["Upload PDF to Pinecone", "Ask a Question"])
 
-# --- Upload mode ---
+# Upload mode
 if mode == "Upload PDF to Pinecone":
     pdf_file = st.file_uploader("Upload your PDF manual", type=["pdf"])
     if pdf_file:
@@ -198,13 +198,13 @@ if mode == "Upload PDF to Pinecone":
         if st.button("Process and Upload to Pinecone"):
             upload_pdf_to_pinecone(PDF_PATH, MANUAL_NAME)
 
-# --- Question mode ---
+#  Question mode 
 else:
     query = st.text_input("Ask a question about the manual:")
     if st.button("Search") and query.strip():
         q_embed = embed_model.encode([query], convert_to_numpy=True)
         results = index.query(
-            vector=q_embed[0].tolist(),  # Convert NumPy array to plain list
+            vector=q_embed[0].tolist(),  
             top_k=3,
             include_metadata=True
         )
