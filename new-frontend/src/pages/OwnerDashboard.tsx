@@ -25,10 +25,10 @@ const OwnerDashboard = () => {
 
   return (
     <div className="min-h-screen bg-black text-zinc-200 relative overflow-hidden font-serif">
-      {/* Subtle metallic texture */}
+      
       <div className="absolute inset-0 pointer-events-none opacity-10 bg-[radial-gradient(circle_at_20%_30%,#ffffff10,transparent_60%),radial-gradient(circle_at_80%_70%,#ffffff08,transparent_60%)]" />
 
-      {/* Header */}
+      
       <header className="border-b border-zinc-800 bg-black/60 backdrop-blur-sm relative z-10">
         <div className="container mx-auto px-6 py-6 flex items-center justify-between">
           <Button
@@ -47,7 +47,7 @@ const OwnerDashboard = () => {
         </div>
       </header>
 
-      {/* Main Heading */}
+      
       <div className="container mx-auto px-6 py-20 relative z-10 text-center">
         <motion.h1
           initial={{ opacity: 0, y: -20 }}
@@ -67,9 +67,9 @@ const OwnerDashboard = () => {
         </p>
       </div>
 
-      {/* Feature Cards */}
+      
       <div className="container mx-auto px-6 pb-16 max-w-7xl grid md:grid-cols-3 gap-12">
-        {/* CARD 1 */}
+        
         <motion.div
           custom={0}
           variants={cardVariants}
@@ -97,7 +97,7 @@ const OwnerDashboard = () => {
           </Card>
         </motion.div>
 
-        {/* CARD 2 */}
+        
         <motion.div
           custom={1}
           variants={cardVariants}
@@ -125,7 +125,7 @@ const OwnerDashboard = () => {
           </Card>
         </motion.div>
 
-        {/* CARD 3 */}
+        
         <motion.div
           custom={2}
           variants={cardVariants}

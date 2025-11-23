@@ -185,7 +185,7 @@ def display_answer_with_images(answer_text):
             st.dataframe(df)
         else:
             st.warning(f"Missing table: {table_path}")
-st.title("📘 Manual QA with Image Support")
+st.title(" Manual QA with Image Support")
 
 mode = st.radio("Choose Mode", ["Upload PDF to Pinecone", "Ask a Question"])
 

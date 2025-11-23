@@ -37,7 +37,7 @@ const Chat = () => {
     }
   }, [brand, model, navigate]);
 
-  // Enhanced prompt based on mode and component
+ 
   const enhanceQuery = (userQuery: string) => {
     let enhancedQuery = userQuery;
     
@@ -82,19 +82,19 @@ const Chat = () => {
       }
 
       const data = await response.json();
-      // Clean markdown formatting from the response
+      
       let cleanedContent = data.answer.answer_text || "I apologize, but I couldn't generate a response.";
       
-      // Remove markdown headers (###, ##, #)
+      
       cleanedContent = cleanedContent.replace(/^#{1,6}\s+/gm, '');
       
-      // Remove bold/italic markers (* and _)
-      cleanedContent = cleanedContent.replace(/\*\*\*(.+?)\*\*\*/g, '$1'); // bold+italic
-      cleanedContent = cleanedContent.replace(/\*\*(.+?)\*\*/g, '$1'); // bold
-      cleanedContent = cleanedContent.replace(/\*(.+?)\*/g, '$1'); // italic
-      cleanedContent = cleanedContent.replace(/___(.+?)___/g, '$1'); // bold+italic
-      cleanedContent = cleanedContent.replace(/__(.+?)__/g, '$1'); // bold
-      cleanedContent = cleanedContent.replace(/_(.+?)_/g, '$1'); // italic
+      
+      cleanedContent = cleanedContent.replace(/\*\*\*(.+?)\*\*\*/g, '$1'); 
+      cleanedContent = cleanedContent.replace(/\*\*(.+?)\*\*/g, '$1'); 
+      cleanedContent = cleanedContent.replace(/\*(.+?)\*/g, '$1'); 
+      cleanedContent = cleanedContent.replace(/___(.+?)___/g, '$1'); 
+      cleanedContent = cleanedContent.replace(/__(.+?)__/g, '$1');
+      cleanedContent = cleanedContent.replace(/_(.+?)_/g, '$1'); 
       
       const assistantMessage: Message = {
         role: "assistant",
@@ -153,12 +153,12 @@ const Chat = () => {
 
   return (
     <div className="min-h-screen bg-black text-white relative overflow-hidden">
-      {/* Premium Background */}
+      
       <div className="fixed inset-0 z-0">
         <div className="absolute inset-0 bg-gradient-to-br from-black via-gray-900 to-black" />
         <div className={`absolute inset-0 bg-gradient-to-br ${config.bgPattern} opacity-30`} />
         
-        {/* Animated grid */}
+       
         <div className="absolute inset-0 opacity-10">
           <div className="absolute inset-0" style={{
             backgroundImage: 'linear-gradient(rgba(255,255,255,0.03) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,0.03) 1px, transparent 1px)',
@@ -167,7 +167,7 @@ const Chat = () => {
         </div>
       </div>
 
-      {/* Header */}
+      
       <header className="relative z-50 border-b border-white/10 bg-black/40 backdrop-blur-xl">
         <div className="max-w-7xl mx-auto px-6 py-4">
           <div className="flex items-center justify-between">
@@ -197,12 +197,12 @@ const Chat = () => {
         </div>
       </header>
 
-      {/* Main Content */}
+      
       <div className="relative z-10 max-w-7xl mx-auto px-6 py-8 grid lg:grid-cols-3 gap-6 h-[calc(100vh-180px)]">
         
-        {/* Left Sidebar - Context & Quick Actions */}
+        
         <div className="lg:col-span-1 space-y-4 overflow-y-auto">
-          {/* Context Card */}
+         
           <motion.div
             initial={{ opacity: 0, x: -20 }}
             animate={{ opacity: 1, x: 0 }}
@@ -226,7 +226,7 @@ const Chat = () => {
             )}
           </motion.div>
 
-          {/* Quick Actions */}
+          
           <motion.div
             initial={{ opacity: 0, x: -20 }}
             animate={{ opacity: 1, x: 0 }}
@@ -248,7 +248,7 @@ const Chat = () => {
             </div>
           </motion.div>
 
-          {/* Stats */}
+          
           <motion.div
             initial={{ opacity: 0, x: -20 }}
             animate={{ opacity: 1, x: 0 }}
@@ -271,9 +271,9 @@ const Chat = () => {
           </motion.div>
         </div>
 
-        {/* Main Chat Area */}
+        
         <div className="lg:col-span-2 flex flex-col bg-gradient-to-br from-gray-900/50 to-black/50 backdrop-blur-xl border border-white/10 rounded-2xl overflow-hidden">
-          {/* Messages */}
+          
           <div className="flex-1 overflow-y-auto p-6 space-y-6">
             {messages.length === 0 ? (
               <div className="flex items-center justify-center h-full">
@@ -374,7 +374,7 @@ const Chat = () => {
             )}
           </div>
 
-          {/* Input Area */}
+          
           <div className="border-t border-white/10 p-6">
             <form onSubmit={handleSubmit} className="flex gap-3">
               <textarea

@@ -13,8 +13,8 @@ interface Brand {
   tagline: string;
   theme: string;
   
-  video: string; // should be full public path like "/videos/toyota.mp4"
-  color?: string; // optional theme accent
+  video: string; 
+  color?: string;
 }
 
 const brands: Brand[] = [
@@ -80,7 +80,7 @@ export default function BrandSelection() {
     <Stars />
 
     <div className={themeDark ? "min-h-screen bg-black text-white" : "min-h-screen bg-white text-slate-900"}>
-      {/* Top bar */}
+     
       <div className="border-b border-transparent/10 glass-card sticky top-0 z-30 backdrop-blur-md">
         <div className="container mx-auto px-4 py-4 flex items-center justify-between">
           <div className="flex items-center gap-3">
@@ -109,7 +109,7 @@ export default function BrandSelection() {
         </div>
       </div>
 
-      {/* Hero */}
+      
       <div className="container mx-auto px-4 py-12 md:py-20">
         <div className="text-center max-w-4xl mx-auto mb-10">
           <motion.h1 initial={{ opacity: 0, y: 8 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.6 }} className="text-4xl md:text-6xl font-extralight tracking-tight leading-tight">
@@ -120,7 +120,7 @@ export default function BrandSelection() {
           </p>
         </div>
 
-        {/* Grid */}
+        
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
           {brands.map((brand, idx) => (
             <motion.div
@@ -136,7 +136,7 @@ export default function BrandSelection() {
 
                 className={`relative group overflow-hidden rounded-3xl h-72 md:h-80 p-6 border border-white/6 transition-all duration-500 transform ${themeDark ? "bg-gradient-to-br from-[#0b1220]/60 to-[#061026]/40" : "bg-white/5"}`}
               >
-                {/* Hover video (fades in on hover) */}
+                
                 <div className="absolute inset-0 -z-10 overflow-hidden pointer-events-none">
                   <video
                     src={brand.video}
@@ -150,13 +150,13 @@ export default function BrandSelection() {
                   />
                 </div>
 
-                {/* Glass overlay + subtle gradient */}
+                
                 <div className="absolute inset-0 bg-gradient-to-b from-black/40 via-transparent to-black/40 opacity-60 pointer-events-none" />
 
-                {/* Accent stroke */}
+                
                 <div className="absolute -top-8 -left-16 w-48 h-48 rounded-full bg-gradient-to-br from-white/3 to-transparent opacity-5 pointer-events-none blur-2xl" />
 
-                {/* Foreground content */}
+               
                 <div className="relative z-10 flex flex-col items-center justify-center h-full text-center px-2">
   <h3 className="text-2xl md:text-3xl font-semibold tracking-tight opacity-100 group-hover:opacity-0 transition duration-300">{brand.name}</h3>
 
@@ -174,7 +174,7 @@ export default function BrandSelection() {
         </div>
       </div>
 
-      {/* Expand modal / preview */}
+     
       <AnimatePresence>
         {selected && (
           <motion.div
@@ -192,7 +192,7 @@ export default function BrandSelection() {
               transition={{ duration: 0.35 }}
               className="relative max-w-4xl w-full bg-gradient-to-br from-[#081026] to-[#04101b] rounded-2xl overflow-hidden border border-white/8 shadow-2xl"
             >
-              {/* big video */}
+              
               <div className="relative h-72 md:h-96">
                 <video
                   src={selected.video}
@@ -202,7 +202,7 @@ export default function BrandSelection() {
                   playsInline
                   className="w-full h-full object-cover"
                 />
-                {/* top actions */}
+                
                 <div className="absolute top-4 left-4 flex gap-2">
                   <button onClick={closeBrand} className="p-2 rounded-md bg-black/40 hover:bg-black/30">
                     Close

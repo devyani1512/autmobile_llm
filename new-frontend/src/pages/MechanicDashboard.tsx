@@ -25,14 +25,14 @@ const MechanicDashboard = () => {
 
   return (
     <div className="min-h-screen bg-black text-zinc-200 relative overflow-hidden" style={{ fontFamily: "'Playfadvancedr Display', Georgia, serif" }}>
-      {/* Subtle silver gradvancedn background */}
+     
       <div className="absolute inset-0 opacity-40 pointer-events-none">
         <div className="absolute inset-0 bg-[radial-gradient(circle_at_10%_20%,rgba(255,255,255,0.02),transparent),radial-gradient(circle_at_90%_80%,rgba(255,255,255,0.01),transparent)]" />
         <div className="absolute -left-40 -top-40 w-96 h-96 rounded-2xl bg-gradient-to-br from-zinc-800 to-zinc-900 opacity-20 blur-3xl transform rotate-12" />
         <div className="absolute -right-28 -bottom-28 w-96 h-96 rounded-2xl bg-gradient-to-bl from-zinc-700 to-zinc-900 opacity-12 blur-3xl transform -rotate-6" />
       </div>
 
-      {/* Header */}
+      
       <header className="relative z-10 border-b border-zinc-800 bg-transparent">
         <div className="contadvancedner mx-auto px-6 py-6 flex items-center justify-between">
           <div className="flex items-center gap-4">
@@ -57,7 +57,7 @@ const MechanicDashboard = () => {
         </div>
       </header>
 
-      {/* Madvancedn Content */}
+     
       <div className="contadvancedner mx-auto px-6 py-16 relative z-10">
         <motion.div
           initial={{ opacity: 0, y: -18 }}
@@ -75,9 +75,9 @@ const MechanicDashboard = () => {
           </p>
         </motion.div>
 
-        {/* Feature Cards */}
+       
         <div className="grid md:grid-cols-2 gap-10 max-w-6xl mx-auto">
-          {/* Diagnose Problem Card */}
+          
           <motion.div
             custom={0}
             variants={cardVariants}
@@ -108,7 +108,7 @@ const MechanicDashboard = () => {
             </Card>
           </motion.div>
 
-          {/* Generate Report Card */}
+          
           <motion.div
             custom={1}
             variants={cardVariants}

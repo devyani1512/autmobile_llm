@@ -135,7 +135,7 @@ const EmergencyMode = () => {
 
   return (
     <div className="min-h-screen bg-gradient-hero">
-      {/* Header */}
+      
       <header className="border-b border-border glass-card">
         <div className="container mx-auto px-4 py-6">
           <div className="flex items-center justify-between">
@@ -156,7 +156,7 @@ const EmergencyMode = () => {
         </div>
       </header>
 
-      {/* Main Content */}
+     
       <div className="container mx-auto px-4 py-12">
         <motion.div
           initial={{ opacity: 0, y: -20 }}
@@ -170,7 +170,7 @@ const EmergencyMode = () => {
           </p>
         </motion.div>
 
-        {/* Emergency Cards Grid */}
+        
         <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6 max-w-7xl mx-auto">
           {emergencies.map((emergency, index) => {
             const Icon = emergency.icon;
@@ -208,7 +208,7 @@ const EmergencyMode = () => {
         </div>
       </div>
 
-      {/* Emergency Details Dialog */}
+      
       <Dialog open={!!selectedEmergency} onOpenChange={() => setSelectedEmergency(null)}>
         <DialogContent className="max-w-2xl glass-card border-emergency/50">
           {selectedEmergency && (
@@ -224,7 +224,7 @@ const EmergencyMode = () => {
               </DialogHeader>
 
               <div className="mt-4 space-y-6">
-                {/* Warnings */}
+                
                 {selectedEmergency.warnings.length > 0 && (
                   <div className="bg-emergency/10 border border-emergency/30 rounded-lg p-4">
                     <h4 className="font-bold text-emergency mb-2 flex items-center gap-2">
@@ -242,7 +242,7 @@ const EmergencyMode = () => {
                   </div>
                 )}
 
-                {/* Steps */}
+                
                 <div>
                   <h4 className="font-bold text-lg mb-3">Step-by-Step Instructions</h4>
                   <ol className="space-y-3">
@@ -257,7 +257,7 @@ const EmergencyMode = () => {
                   </ol>
                 </div>
 
-                {/* Actions */}
+               
                 {selectedEmergency.severity === "critical" && (
                   <div className="bg-emergency/5 border border-emergency/30 rounded-lg p-4">
                     <Button className="w-full bg-gradient-emergency hover:opacity-90 text-white text-lg py-6">

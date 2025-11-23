@@ -33,12 +33,12 @@ const ReportGeneration = () => {
       ...formData,
       [e.target.name]: e.target.value
     });
-    // Reset generated state when form changes
+    
     setReportGenerated(false);
   };
 
   const handleGenerate = async () => {
-    // Validate required fields
+    
     if (!formData.vin || !formData.make || !formData.model || !formData.problemDescription) {
       toast({
         title: "Missing Information",
@@ -50,7 +50,7 @@ const ReportGeneration = () => {
 
     setIsGenerating(true);
     
-    // Simulate report generation
+    
     setTimeout(() => {
       setIsGenerating(false);
       setReportGenerated(true);
@@ -62,7 +62,7 @@ const ReportGeneration = () => {
   };
 
   const handleDownload = () => {
-    // Create a simple HTML report
+    
     const reportContent = `
 <!DOCTYPE html>
 <html>
@@ -204,7 +204,7 @@ const ReportGeneration = () => {
 </html>
     `;
 
-    // Create blob and download
+    
     const blob = new Blob([reportContent], { type: 'text/html' });
     const url = window.URL.createObjectURL(blob);
     const a = document.createElement('a');
@@ -231,7 +231,7 @@ const ReportGeneration = () => {
       return;
     }
 
-    // Create a print-friendly version
+   
     const printWindow = window.open('', '_blank');
     if (printWindow) {
       printWindow.document.write(`
@@ -355,7 +355,7 @@ const ReportGeneration = () => {
       `);
       printWindow.document.close();
       
-      // Wait for content to load, then print
+      
       setTimeout(() => {
         printWindow.print();
       }, 250);
@@ -389,10 +389,10 @@ const ReportGeneration = () => {
         </div>
       </header>
 
-      {/* Main Content */}
+      
       <div className="container mx-auto px-4 py-12">
         <div className="grid md:grid-cols-2 gap-8 max-w-7xl mx-auto">
-          {/* Form */}
+         
           <motion.div
             initial={{ opacity: 0, x: -30 }}
             animate={{ opacity: 1, x: 0 }}
@@ -410,7 +410,7 @@ const ReportGeneration = () => {
               </div>
 
               <div className="space-y-6">
-                {/* Vehicle Information */}
+                
                 <div className="space-y-4">
                   <h3 className="font-semibold text-lg">Vehicle Information</h3>
                   
@@ -463,7 +463,7 @@ const ReportGeneration = () => {
                   </div>
                 </div>
 
-                {/* Problem Description */}
+                
                 <div>
                   <Label htmlFor="problemDescription">Problem Description *</Label>
                   <Textarea
@@ -477,7 +477,7 @@ const ReportGeneration = () => {
                   />
                 </div>
 
-                {/* Diagnostic Findings */}
+                
                 <div>
                   <Label htmlFor="diagnosticFindings">Diagnostic Findings</Label>
                   <Textarea
@@ -491,7 +491,7 @@ const ReportGeneration = () => {
                   />
                 </div>
 
-                {/* Service Details */}
+                
                 <div className="space-y-4">
                   <h3 className="font-semibold text-lg">Service Details</h3>
                   
@@ -538,7 +538,7 @@ const ReportGeneration = () => {
                   </div>
                 </div>
 
-                {/* Generate Button */}
+               
                 <Button
                   onClick={handleGenerate}
                   disabled={isGenerating || !isFormValid}
@@ -570,7 +570,7 @@ const ReportGeneration = () => {
             </Card>
           </motion.div>
 
-          {/* Preview */}
+          
           <motion.div
             initial={{ opacity: 0, x: 30 }}
             animate={{ opacity: 1, x: 0 }}
@@ -672,7 +672,7 @@ const ReportGeneration = () => {
                 </AnimatePresence>
               </div>
 
-              {/* Action Buttons */}
+              
               <div className="space-y-3">
                 <Button 
                   onClick={handleDownload}

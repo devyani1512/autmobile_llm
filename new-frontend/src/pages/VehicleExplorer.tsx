@@ -80,13 +80,13 @@ const VehicleExplorer = () => {
   const [isLoadingManual, setIsLoadingManual] = useState(false);
   const [manualError, setManualError] = useState<string | null>(null);
   
-  // New states for vehicle specs
+  
   const [vehicleSpecs, setVehicleSpecs] = useState<VehicleSpecs | null>(null);
   const [isLoadingSpecs, setIsLoadingSpecs] = useState(true);
 
   const vehicleName = `${brand.charAt(0).toUpperCase() + brand.slice(1)} ${model.split('-').map((w: string) => w.charAt(0).toUpperCase() + w.slice(1)).join(' ')}`;
 
-  // Fetch vehicle specifications from manual on component mount
+  
   useEffect(() => {
     fetchVehicleSpecs();
   }, [brand, model]);
@@ -130,19 +130,19 @@ Provide ONLY the values in a clear format. If a specification is not found, writ
       const notFound = Object.values(specs).every((v) => v === "Not specified");
 
       if (notFound) {
-        console.log("⚠️ Manual has no specs → Using fallback API");
+        console.log("Manual has no specs → Using fallback API");
         const fallbackSpecs = await fetchFallbackSpecs();
         setVehicleSpecs(fallbackSpecs);
       } else {
         setVehicleSpecs(specs);
       }
     } else {
-      console.log("⚠️ Manual empty → Using fallback API");
+      console.log("Manual empty → Using fallback API");
       const fallbackSpecs = await fetchFallbackSpecs();
       setVehicleSpecs(fallbackSpecs);
     }
   } catch (error) {
-    console.error("❌ Error fetching specs:", error);
+    console.error("Error fetching specs:", error);
     const fallbackSpecs = await fetchFallbackSpecs();
     setVehicleSpecs(fallbackSpecs);
   } finally {
@@ -152,7 +152,7 @@ Provide ONLY the values in a clear format. If a specification is not found, writ
 
 
   const parseSpecsFromText = (text: string): VehicleSpecs => {
-    // Simple parsing logic - can be enhanced based on your manual format
+   
     const lines = text.split('\n');
     const specs: VehicleSpecs = {
       topSpeed: "Not specified",
@@ -216,7 +216,7 @@ Return ONLY plain values in bullet points.
         query: fallbackQuery,
         manufacturer: brand,
         model: model,
-        mode: "general",  // <-- IMPORTANT
+        mode: "general",  
       }),
     });
 
@@ -256,7 +256,7 @@ Return ONLY plain values in bullet points.
     setManualError(null);
     
     try {
-      // Enhanced query to specifically request images and diagrams
+      
       const query = `What does the manual say about the ${componentName} in this vehicle? 
 Please include:
 1. Detailed component information and specifications
@@ -279,7 +279,7 @@ Please ensure to include all visual aids (diagrams, photos, illustrations) that 
           manufacturer: brand,
           model: model,
           mode: "owner",
-          component: componentId  // Pass component info to backend
+          component: componentId  
         }),
       });
 
@@ -294,13 +294,13 @@ Please ensure to include all visual aids (diagrams, photos, illustrations) that 
       
       if (data.answer) {
         if (data.answer) {
-        // Clean markdown formatting from the response
+        
         let cleanedContent = data.answer.answer_text || "";
         
-        // Remove markdown headers (###, ##, #)
+        
         cleanedContent = cleanedContent.replace(/^#{1,6}\s+/gm, '');
         
-        // Remove bold/italic markers (* and _)
+        
         cleanedContent = cleanedContent.replace(/\*\*\*(.+?)\*\*\*/g, '$1'); // bold+italic
         cleanedContent = cleanedContent.replace(/\*\*(.+?)\*\*/g, '$1'); // bold
         cleanedContent = cleanedContent.replace(/\*(.+?)\*/g, '$1'); // italic
@@ -384,7 +384,7 @@ Please ensure to include all visual aids (diagrams, photos, illustrations) that 
 
       <div className="relative z-10 max-w-7xl mx-auto px-8 py-16">
         
-        {/* Title Section */}
+        
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
@@ -398,7 +398,7 @@ Please ensure to include all visual aids (diagrams, photos, illustrations) that 
           </p>
         </motion.div>
 
-        {/* Car Features Grid */}
+       
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
@@ -453,10 +453,10 @@ Please ensure to include all visual aids (diagrams, photos, illustrations) that 
         </motion.div>
         
 
-        {/* Two Column Layout */}
+       
         <div className="grid lg:grid-cols-2 gap-8">
           
-          {/* Left: Vehicle Visualization */}
+          
           <motion.div
             initial={{ opacity: 0, x: -30 }}
             animate={{ opacity: 1, x: 0 }}
@@ -532,7 +532,7 @@ Please ensure to include all visual aids (diagrams, photos, illustrations) that 
             </div>
           </motion.div>
 
-          {/* Right: Component Details */}
+         
           <motion.div
             initial={{ opacity: 0, x: 30 }}
             animate={{ opacity: 1, x: 0 }}
@@ -624,7 +624,7 @@ Please ensure to include all visual aids (diagrams, photos, illustrations) that 
                             </div>
                           )}
                           
-                          {/* Technical Tables */}
+                          
                           {manualData.tables && manualData.tables.length > 0 && (
                             <div className="space-y-3 mb-6">
                               <h5 className="text-xs uppercase tracking-wider text-gray-500 mb-3">Technical Specifications</h5>

@@ -33,12 +33,12 @@ const HeroLanding = () => {
 
   return (
     <div className="min-h-screen bg-black text-white relative overflow-hidden cursor-pointer" onClick={handleClick}>
-      {/* Dynamic background with multiple layers */}
+      
       <div className="absolute inset-0">
-        {/* Base gradient */}
+        
         <div className="absolute inset-0 bg-gradient-to-br from-zinc-950 via-black to-zinc-900" />
         
-        {/* Animated light beams */}
+        
         <motion.div
           animate={{
             opacity: [0.1, 0.3, 0.1],
@@ -66,7 +66,7 @@ const HeroLanding = () => {
           className="absolute -bottom-1/2 -left-1/2 w-full h-full bg-gradient-radial from-purple-500/20 via-transparent to-transparent blur-3xl"
         />
 
-        {/* Subtle scan lines effect */}
+        
         <div 
           className="absolute inset-0 opacity-[0.02]"
           style={{
@@ -75,7 +75,7 @@ const HeroLanding = () => {
         />
       </div>
 
-      {/* Floating particles */}
+      
       {[...Array(20)].map((_, i) => (
         <motion.div
           key={i}
@@ -98,7 +98,7 @@ const HeroLanding = () => {
         />
       ))}
 
-      {/* Minimalist logo top left */}
+      
       <motion.div
         initial={{ opacity: 0, x: -20 }}
         animate={{ opacity: 1, x: 0 }}
@@ -110,9 +110,9 @@ const HeroLanding = () => {
         </div>
       </motion.div>
 
-      {/* Main content - centered */}
+      
       <div className="relative z-10 flex flex-col items-center justify-center min-h-screen px-8">
-        {/* Animated lines before text */}
+        
         <motion.div
           initial={{ width: 0 }}
           animate={{ width: "100px" }}
@@ -120,7 +120,7 @@ const HeroLanding = () => {
           className="h-[1px] bg-gradient-to-r from-transparent via-white to-transparent mb-12"
         />
 
-        {/* Main heading with staggered reveal */}
+       
         <div className="text-center max-w-5xl">
           <motion.div
             initial={{ opacity: 0 }}
@@ -145,7 +145,7 @@ const HeroLanding = () => {
               <h1 className="text-8xl md:text-9xl font-extralight tracking-[-0.02em] leading-none">
                 INTELLIGENCE
               </h1>
-              {/* Glowing underline */}
+              
               <motion.div
                 initial={{ width: 0 }}
                 animate={{ width: "100%" }}
@@ -155,7 +155,7 @@ const HeroLanding = () => {
             </motion.div>
           </motion.div>
 
-          {/* Subtitle with fade in */}
+          
           <motion.p
             initial={{ opacity: 0 }}
             animate={{ opacity: 0.5 }}
@@ -166,7 +166,7 @@ const HeroLanding = () => {
           </motion.p>
         </div>
 
-        {/* Animated lines after text */}
+        
         <motion.div
           initial={{ width: 0 }}
           animate={{ width: "100px" }}
@@ -175,7 +175,7 @@ const HeroLanding = () => {
         />
       </div>
 
-      {/* Bottom year/tagline */}
+      
       <motion.div
         initial={{ opacity: 0 }}
         animate={{ opacity: 0.3 }}
@@ -187,7 +187,7 @@ const HeroLanding = () => {
         </div>
       </motion.div>
 
-      {/* Scroll hint - subtle pulse */}
+    
       <motion.div
         initial={{ opacity: 0 }}
         animate={{ opacity: [0, 0.4, 0] }}

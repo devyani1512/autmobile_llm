@@ -26,13 +26,13 @@ const ModeSelection = () => {
 
   return (
     <div className="min-h-screen bg-[#0A0A0A] text-white relative overflow-hidden">
-      {/* Luxury Ambient Glow */}
+     
       <div className="absolute inset-0 pointer-events-none">
         <div className="absolute top-20 left-1/3 w-[600px] h-[600px] bg-[#1A1A1A] rounded-full blur-[140px] opacity-40" />
         <div className="absolute bottom-10 right-1/4 w-[500px] h-[500px] bg-[#222] rounded-full blur-[150px] opacity-30" />
       </div>
 
-      {/* Header */}
+    
       <header className="border-b border-neutral-800/60 backdrop-blur-xl bg-black/20 sticky top-0 z-20">
         <div className="container mx-auto px-6 py-5 flex items-center justify-between">
           <Button
@@ -57,7 +57,7 @@ const ModeSelection = () => {
         </div>
       </header>
 
-      {/* Hero Section */}
+      
       <div className="container mx-auto px-6 py-20 text-center max-w-4xl relative z-10">
         <motion.div
           initial={{ opacity: 0, y: -20 }}
@@ -79,7 +79,7 @@ const ModeSelection = () => {
         </motion.div>
       </div>
 
-      {/* Mode Options */}
+      
       <div className="container mx-auto px-6 pb-24 grid md:grid-cols-2 gap-14 max-w-6xl relative z-10">
         {/* Owner Mode */}
         <motion.div
