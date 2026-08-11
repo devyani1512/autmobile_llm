@@ -105,15 +105,6 @@ The evaluation engine:
 - Feedback-driven improvement (RLHF-style) using user ratings on answer quality.
 - Reinforcement learning for retrieval optimization based on user interaction patterns.
 
-## Project Information
-
-- **Title:** AI-Powered Technical Assistant for Modern Vehicles
-- **Institution:** Jaypee Institute of Information Technology, Noida
-- **Department:** Computer Science and Information Technology
-- **Program:** B.Tech, 5th Semester, 3rd Year
-- **Supervisor:** Prof. Anuja Arora
-- **Contributors:** Devyani Sharma, Anushka Tayal, Shambhavi Tripathi
-- **Date:** November 2025
 
 ## References
 
